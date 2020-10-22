@@ -12,3 +12,17 @@ export const createPost = post => {
     };
 
 }
+
+
+// update post by id
+export const updatePost = ( id, post ) => {
+
+    return {
+        type: ACTIONS.UPDATE_POST,
+        payload: {
+            id: id,
+            post: post
+        }
+    };
+
+}
