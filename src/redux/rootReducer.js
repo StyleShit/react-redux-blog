@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import dataReducer from './data/reducer';
+import postsReducer from './posts/reducer';
 
 
 // combine all reducers and export them as one
 const rootReducer = combineReducers({
-    data: dataReducer 
+    posts: postsReducer 
 });
 
 export default rootReducer;
