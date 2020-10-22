@@ -11,8 +11,8 @@ function Post({ post })
             <h3 className="blue">{ title }</h3>
             <p>{ content}</p>
 
-            <Link to={ `/posts/${id}/edit` }>
-                <button className="btn btn-info">Edit</button>
+            <Link to={ `/posts/${id}/edit` } className="btn btn-info">
+                Edit
             </Link>
         </div>
     )

@@ -12,8 +12,8 @@ function Posts()
 
             <h1 className="posts-title blue">Posts</h1>
 
-            <Link to={ `/posts/new` }>
-                <button className="btn btn-info">New Post</button>
+            <Link to={ `/posts/new` } className="btn btn-info">
+                New Post
             </Link>
 
             {

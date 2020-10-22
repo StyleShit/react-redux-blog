@@ -441,6 +441,7 @@ input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type=
     cursor: pointer;
     display: inline-block;
     margin: 5px auto;
+    text-decoration: none;
 }
 
 .btn:hover
