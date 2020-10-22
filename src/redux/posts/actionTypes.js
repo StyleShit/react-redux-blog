@@ -1,5 +1,5 @@
 const ACTIONS = {
-    SET_USERS: 'SET_USERS'
+    CREATE_POST: 'CREATE_POST'
 };
 
 export default ACTIONS;

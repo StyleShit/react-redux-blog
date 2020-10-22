@@ -2,9 +2,7 @@ import ACTIONS from './actionTypes';
 
 
 // set default state values
-const defaultState = {
-    users: []
-};
+const defaultState = [];
 
 
 // define the reducer
@@ -12,8 +10,8 @@ const reducer = ( state = defaultState, { type, payload } ) => {
 
     switch( type )
     {
-        case ACTIONS.SET_USERS:
-            return { ...state, users: payload.users };
+        case ACTIONS.CREATE_POST:
+            return { ...state, post: payload.post };
 
         default:
             return state;
