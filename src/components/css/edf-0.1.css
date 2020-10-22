@@ -1,0 +1,645 @@
+/* ------------------
+|       Imports     |
+--------------------*/
+
+@import 'https://fonts.googleapis.com/css?family=Raleway|Montserrat';
+
+
+/* ------------------
+|       Global      |
+--------------------*/
+
+*
+{
+    box-sizing: border-box;
+}
+
+body
+{
+    background-color: #F5F5F5;
+    font-family: Arial;
+}
+
+.sticky
+{
+    position: fixed !important;
+    z-index: 9999;
+}
+
+.gray
+{
+    color: #aaa !important;
+}
+
+.blue
+{
+    color: #00aaff !important;
+}
+
+.green
+{
+    color: #22cc22 !important;
+}
+
+.yellow
+{
+    color: #ffdb00 !important;
+}
+
+.red
+{
+    color: #ff5722 !important;
+}
+
+.turquoise
+{
+    color: #1abc9c !important;
+}
+
+.text-center
+{
+    text-align: center !important;
+}
+
+.center-block
+{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.full-width
+{
+    width: 100% !important;
+}
+
+/* ------------------
+|       Heading     |
+--------------------*/
+
+.header
+{
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px 0;
+    text-align: center;
+    color: #FFF;
+    font-family: Raleway, Arial;
+    text-transform: uppercase;
+    font-size: 25px;
+    background: #00aaff;
+    box-shadow: 0px 0px 2px 1px #555;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+    font-family: Raleway;
+    text-transform: capitalize;
+    font-weight: 400;
+    color: #333;
+    text-shadow: 0px 1px 2px #CCC;
+    position: relative;
+    display: table;
+    cursor: default;
+}
+
+h1:before, h2:before, h3:before, h4:before, h5:before, h6:before,
+h1:after, h2:after, h3:after, h4:after, h5:after, h6:after
+{
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    height: 2px;
+    width: 100%;
+    background-color: #DDD;
+    z-index: 9;
+    transition: 0.3s all;
+}
+
+h1:before, h2:before, h3:before, h4:before, h5:before, h6:before
+{
+    width: 50px;
+    max-width: 40%;
+    background-color: currentColor;
+    z-index: 10;
+}
+
+/*
+h1:hover:before, h2:hover:before, h3:hover:before, h4:hover:before, h5:hover:before, h6:hover:before
+{
+    width: 10%;
+    background-color: #777;
+}
+*/
+
+/* ------------------
+|       Body        |
+--------------------*/
+
+.wrapper
+{
+    margin: auto;
+    background: #FFF;
+    box-shadow: 0px 0px 2px 1px #999;
+    width: 90vw;
+    padding: 40px 5vw;
+}
+
+.header + .wrapper
+{
+    margin-top: 70px;
+}
+
+code
+{
+    background: #F8F8F8;
+    color: #333;
+    font-size: 15px;
+    font-family: Consolas, Arial;
+    text-shadow: 0 0 2px #FFF;
+    text-transform: lowercase;
+    padding: 3px 5px;
+    border: 1px solid #BBB;
+    border-radius: 3px;
+    box-shadow: 0 1px 5px 1px #EEE;
+    display: inline-block;
+    margin: 2px auto;
+}
+
+table
+{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 7px 2px #DDD;
+}
+
+table, tr, th, td
+{
+    color: #333;
+    border: none;
+    border-collapse: collapse;
+    vertical-align: middle;
+    font-family: Raleway;
+    cursor: default;
+    transition: 0.3s all;
+}
+
+th, td
+{
+    padding: 10px 25px;
+}
+
+th
+{
+    background: #0091ea;
+    color: #FFF;
+    text-align: left;
+    font-family: Montserrat;
+}
+
+tr:nth-child(odd) td
+{
+    background: #EEE;
+}
+
+tr:hover td
+{
+    background: #82b1ff;
+    color: #FFF;
+}
+
+/* --------------
+|     Inputs     |
+-----------------*/
+
+label
+{
+    display: inline-block;
+    font-family: Montserrat;
+    font-size: 15px;
+    margin-bottom: 3px;
+    margin-top: 10px;
+    color: #34495e;
+    cursor: pointer;
+}
+
+/* -- Text Inputs -- */
+
+input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]), textarea
+{
+    border: 2px solid #bdc3c7;
+    color: #34495e;
+    font-family: Montserrat;
+    font-size: 15px;
+    line-height: 1.5;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: none;
+    outline: none;
+    transition: 0.3s all;
+}
+
+input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]):focus, textarea:focus
+{
+    border-color: #34495e;
+}
+
+/* -- Checkboxes -- */
+
+.styled-checkbox
+{
+    display: none;
+}
+
+.styled-checkbox + label
+{
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.checkbox-placeholder
+{
+    display: inline-block;
+    height: 14px;
+    width: 14px;
+    background: rgba(144,144,144,0.5);
+    margin-right: 2px;
+    margin-bottom: -2px;
+    position: relative;
+    border-radius: 3px;
+    transition: 0.3s all;
+}
+
+.checkbox-placeholder:before, .checkbox-placeholder:after
+{
+    content: '';
+    display: block;
+    position: absolute;
+    background: #FFF;
+    height: 2px;
+    opacity: 0;
+    transition: 0.3s all;
+}
+
+.checkbox-placeholder:before
+{
+    width: 4px;
+    transform: rotate(45deg);
+    top: 7px;
+    left: 3px;
+}
+
+.checkbox-placeholder:after
+{
+    width: 8px;
+    transform: rotate(-45deg);
+    top: 6px;
+    left: 4px;
+}
+
+.styled-checkbox + label:hover .checkbox-placeholder, .styled-checkbox:checked + label .checkbox-placeholder
+{
+
+    background: #1762EE;
+}
+
+.styled-checkbox:checked + label .checkbox-placeholder:before, .styled-checkbox:checked + label .checkbox-placeholder:after
+{
+    opacity: 1;
+}
+
+/* -- Radios -- */
+
+.styled-radio
+{
+    display: none;
+}
+
+.styled-radio + label
+{
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.radio-placeholder
+{
+    display: inline-block;
+    height: 14px;
+    width: 14px;
+    background: rgba(144,144,144,0.5);
+    margin-right: 2px;
+    margin-bottom: -2px;
+    position: relative;
+    border-radius: 90px;
+    transition: 0.3s all;
+}
+
+.radio-placeholder:before
+{
+    content: '';
+    display: block;
+    position: absolute;
+    background: #FFF;
+    height: 6px;
+    width: 6px;
+    opacity: 0;
+    border-radius: 90px;
+    top: 4px;
+    left: 4px;
+    transition: 0.3s all;
+}
+
+.styled-radio + label:hover .radio-placeholder, .styled-radio:checked + label .radio-placeholder
+{
+
+    background: #1762EE;
+}
+
+.styled-radio:checked + label .radio-placeholder:before
+{
+    opacity: 1;
+}
+
+/* -- Switches -- */
+.switch
+{
+    display: none;
+}
+
+.switch + label
+{
+    color: rgba(0,0,0,0.4);
+    padding-left: 25px;
+    position: relative;
+    transition: 0.3s all;
+}
+
+.switch + label::before
+{
+    content: '';
+    display: block;
+    background-color: rgba(144,144,144,0.5);
+    height: 6px;
+    width: 20px;
+    border-radius: 50px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -3px;
+    transition: 0.3s all;
+}
+
+.switch + label::after
+{
+    content: '';
+    display: block;
+    position: absolute;
+    height: 12px;
+    width: 12px;
+    left: 0;
+    background-color: #555;
+    border-radius: 50px;
+    top: 50%;
+    margin-top: -6px;
+    transition: 0.3s all;
+}
+
+.switch:checked + label, .switch:hover + label
+{
+    color: #34495e;
+}
+
+.switch:checked + label::before
+{
+    box-shadow: 0 0 0 100px rgba(23, 98, 238, 0.5) inset;
+}
+
+.switch:checked + label::after
+{
+    background-color: #1762EE;
+    left: 10px;
+}
+
+
+/* ----------------
+|     Buttons     |
+------------------*/
+
+.btn
+{
+    background: #aaaaaa;
+    color: #FFF;
+    font-size: 16px;
+    border: none;
+    border-bottom: 4px solid #747474;
+    font-family: Segoe UI;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    margin: 5px auto;
+}
+
+.btn:hover
+{
+    border-bottom-width: 3px;
+}
+
+.btn:active
+{
+    border-bottom-width: 1px;
+}
+
+.btn-info
+{
+    background: #00aaff;
+    border-bottom-color: #0099dd;
+}
+
+.btn-success
+{
+    background: #22cc22;
+    border-bottom-color: #22aa22;
+}
+
+.btn-warning
+{
+    text-shadow: 0px 0px 5px #555;
+    background: #ffdb00;
+    border-bottom-color: #ffbf00;
+}
+
+.btn-error
+{
+    background: #ff5722;
+    border-bottom-color: #bf360c;
+}
+
+.btn-icon:before
+{
+    display: inline-block;
+    font-family: FontAwesome;
+    margin-right: 5px;
+}
+
+.btn-info.btn-icon:before
+{
+    content: "\f129";
+}
+
+.btn-success.btn-icon:before
+{
+    content: "\f00c";
+}
+
+.btn-warning.btn-icon:before
+{
+    content: "\f12a";
+}
+
+.btn-error.btn-icon:before
+{
+    content: "\f00d";
+}
+
+.btn-icon:hover:before
+{
+    animation: shake 0.5s;
+}
+
+.btn-bounce:hover
+{
+    animation: bounce 0.5s ease-in-out;
+}
+
+
+/* ----------------
+|       Tabs      |
+------------------*/
+
+.tabs-container
+{
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.tabs-container .tab
+{
+    display: inline;
+}
+
+.tabs-container .tab > input[type="radio"]
+{
+    display: none;
+}
+
+.tabs-container .tab > label
+{
+    display: inline-block;
+    background: #0099dd;
+    color: #FFF;
+    font-family: Montserrat;
+    padding: 10px 20px;
+    font-size: 17px;
+    position: relative;
+    margin: 0;
+    z-index: 8;
+    border-bottom: none;
+    z-index: 10;
+    cursor: pointer;
+    border-radius: 5px 5px 0 0;
+    transition: 0.2s all;
+}
+
+.tabs-container label:hover
+{
+    background: #008ac7;
+}
+
+.tabs-container .tab .tab-content
+{
+    color: #FFF;
+    position: relative;
+    float: left;
+    display: none;
+    background: #00aaff;
+    font-family: Montserrat;
+    padding: 10px 20px;
+    z-index: 9;
+}
+
+.tabs-container .tab input[type="radio"]:checked ~ label
+{
+    background: #00aaff;
+    cursor: default;
+}
+
+.tabs-container .tab input[type="radio"]:checked ~ .tab-content
+{
+    display: block;
+    animation: fadeIn 0.3s;
+}
+
+.tabs-container:after
+{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/* ----------------------
+|       Animations      |
+------------------------*/
+
+@keyframes shake
+{
+    0%, 100%
+    {
+        transform: rotate(0deg);
+    }
+    
+    25%
+    {
+        transform: rotate(-40deg);
+    }
+    
+    50%
+    {
+        transform: rotate(40deg);
+    }
+}
+
+@keyframes bounce
+{
+    0%, 100%
+    {
+        transform: scaleX(1) scaleY(1);
+    }
+    
+    25%
+    {
+        transform: scaleX(1.1) scaleY(0.9);
+    }
+    
+    50%
+    {
+        transform: scaleX(0.9) scaleY(1.1);
+    }
+}
+
+@keyframes fadeIn
+{
+    from
+    {
+        opacity: 0;
+    }
+    
+    to
+    {
+        opacity: 1;
+    }
+}
