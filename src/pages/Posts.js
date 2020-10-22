@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Post from '../components/Post';
 
 function Posts()
@@ -10,6 +11,10 @@ function Posts()
         <div className="wrapper">
 
             <h1 className="posts-title blue">Posts</h1>
+
+            <Link to={ `/posts/new` }>
+                <button className="btn btn-info">New Post</button>
+            </Link>
 
             {
                 posts.map( ( post, i ) => {

@@ -15,12 +15,17 @@ const reducer = ( state = defaultState, { type, payload } ) => {
 
     switch( type )
     {
-        case ACTIONS.CREATE_POST:
-            return [ ...state, payload.post ];
+        case ACTIONS.SAVE_POST:
 
-        case ACTIONS.UPDATE_POST:
             let updated = [ ...state ];
-            updated[payload.id] = payload.post;
+
+            // create new post
+            if( payload.id === 'new' )
+                updated = [ ...updated, payload.post ];
+
+            // update existing post
+            else
+                updated[payload.id] = payload.post;
 
             return updated;
 

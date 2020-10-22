@@ -1,6 +1,5 @@
 const ACTIONS = {
-    CREATE_POST: 'CREATE_POST',
-    UPDATE_POST: 'UPDATE_POST'
+    SAVE_POST: 'SAVE_POST'
 };
 
 export default ACTIONS;

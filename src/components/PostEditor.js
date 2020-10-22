@@ -1,29 +1,27 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import { updatePost } from '../redux/posts/actions';
+import { savePost } from '../redux/posts/actions';
 import Input from './Input';
 import Overlay from './Overlay';
 import Textarea from './Textarea';
 
 function PostEditor()
 {
-    // get router history
     const history = useHistory();
-
-    // get dispatch function
     const dispatch = useDispatch();
 
-    // get id param from URL
-    const { id } = useParams();
-
-    // get post by id
+    // get post by URL paramter
+    const { id: postID } = useParams();
     const posts = useSelector( state => state.posts );
 
-    if( typeof posts[id] === 'undefined')
-        return '';
-
-    let { title, content } = posts[id];
+    // extract data from current edited post, 
+    // or set as a new one if it doesn't exist
+    let {
+        title = '', 
+        content = '', 
+        id = 'new'
+    } = ( typeof posts[postID] !== 'undefined') ? { ...posts[postID], id: postID } : {};
 
     return (
         <>
@@ -37,15 +35,15 @@ function PostEditor()
                         
                         <br /><br />
 
-                        <Textarea value={ content } label="Post Content:" onChange={ value => { content = value } } />
+                        <Textarea value={ content } label="Post Content" onChange={ value => { content = value } } />
 
                         <br /><br />
 
                         <input type="submit" 
-                            value="Save" 
+                            value={ id === 'new' ? 'Post' : 'Save' }
                             className="btn btn-info" 
                             onClick={ () => { 
-                                dispatch( updatePost( id, { title, content } ) );
+                                dispatch( savePost( id, { title, content } ) );
                                 history.goBack();
                             } 
                         } />

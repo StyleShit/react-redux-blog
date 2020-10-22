@@ -33,7 +33,7 @@ function App()
 
 				</Switch>
 
-				<Route path='/posts/:id'>
+				<Route path={[ '/posts/:id/edit', '/posts/new' ]}>
 					<PostEditor></PostEditor>
 				</Route>
 			</Router>
