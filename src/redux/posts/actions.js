@@ -13,3 +13,16 @@ export const savePost = ( id, post ) => {
     };
 
 }
+
+
+// delete post by id
+export const deletePost = id => {
+
+    return {
+        type: ACTIONS.DELETE_POST,
+        payload: {
+            id: id
+        }
+    };
+
+}

@@ -15,19 +15,14 @@ const reducer = ( state = defaultState, { type, payload } ) => {
 
     switch( type )
     {
+        // save post
         case ACTIONS.SAVE_POST:
+            return savePost( state, payload.id, payload.post );
 
-            let updated = [ ...state ];
 
-            // create new post
-            if( payload.id === 'new' || typeof( updated[payload.id] ) === 'undefined' )
-                updated = [ ...updated, payload.post ];
-
-            // update existing post
-            else
-                updated[payload.id] = payload.post;
-
-            return updated;
+        // delete post
+        case ACTIONS.DELETE_POST:
+            return deletePost( state, payload.id );
 
         default:
             return state;
@@ -36,3 +31,38 @@ const reducer = ( state = defaultState, { type, payload } ) => {
 };
 
 export default reducer;
+
+
+/**
+ * Reducer helper functions
+ */
+
+const savePost = ( state, id, post) => {
+    let updated = [ ...state ];
+
+    // create new post
+    if( id === 'new' || typeof( updated[id] ) === 'undefined' )
+        updated = [ ...updated, post ];
+
+    // update existing post
+    else
+        updated[id] = post;
+
+    return updated;
+}
+
+
+const deletePost = ( state, id ) => {
+
+    let updated = [ ...state ];
+
+    // if post id doesn't exists
+    if( typeof( updated[id] ) === 'undefined' )
+        return updated;
+
+    
+    updated.splice( id, 1);
+
+    return updated;
+
+}

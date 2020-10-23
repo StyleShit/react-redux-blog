@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { deletePost } from '../redux';
+import { useDispatch } from 'react-redux';
 
 function Post({ post })
 {
     const { title, content, id } = post;
+    const dispatch = useDispatch();
 
     return (
         <div className="panel">
@@ -14,6 +17,8 @@ function Post({ post })
             <Link to={ `/posts/${id}/edit` } className="btn btn-info">
                 Edit
             </Link>
+
+            <button onClick={ () => { dispatch( deletePost( id ) ) } } className="btn btn-error">Delete</button>
         </div>
     )
 }
