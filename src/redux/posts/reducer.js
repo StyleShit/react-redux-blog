@@ -20,7 +20,7 @@ const reducer = ( state = defaultState, { type, payload } ) => {
             let updated = [ ...state ];
 
             // create new post
-            if( payload.id === 'new' )
+            if( payload.id === 'new' || typeof( updated[payload.id] ) === 'undefined' )
                 updated = [ ...updated, payload.post ];
 
             // update existing post
