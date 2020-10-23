@@ -1,3 +1,3 @@
-# React-Redux Boilerplate
+# React-Redux Blog
 
-A React app created using `create-react-app` with some cleanup & redux boilerplate
+Just trying out some Redux...
