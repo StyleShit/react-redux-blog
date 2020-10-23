@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import { savePost } from '../redux/posts/actions';
+import { savePost } from '../redux';
 import Input from './Input';
 import Overlay from './Overlay';
 import Textarea from './Textarea';
