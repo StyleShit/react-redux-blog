@@ -31,11 +31,11 @@ function PostEditor()
                 <div className="post-editor">
                     <form onSubmit={ e => { e.preventDefault() }}>
 
-                        <Input value={ title } label="Post Title" onChange={ value => { title = value } } />
+                        <Input value={ title } label="Post Title" onChange={ e => { title = e.target.value } } />
                         
                         <br /><br />
 
-                        <Textarea value={ content } label="Post Content" onChange={ value => { content = value } } />
+                        <Textarea value={ content } label="Post Content" onChange={ e => { content = e.target.value } } />
 
                         <br /><br />
 

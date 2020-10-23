@@ -1,32 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
+import withManagedValue from '../HOCs/withManagedValue';
 
-function Input( props )
+function Input({ label, ...rest })
 {
-    // extract props
-    const { 
-        label,
-        id,
-        type = "text",
-        value: defaultValue = "",
-        onChange,
-        ...rest 
-    } = props;
-
-    // initialize state
-    const [value, setValue] = useState( defaultValue );
-
     return (
         <>
             { label &&
                 <>
-                    <label htmlFor={ id }>{ label }:</label>
+                    <label htmlFor={ rest.id }>{ label }:</label>
                     <br />
                 </>
             }
 
-            <input id={ id } type={ type } value={ value } { ...rest } onChange={ e => { setValue( e.target.value ); onChange( e.target.value ) }} />
+            <input { ...rest } />
         </>
     )
 }
 
-export default Input
+export default withManagedValue( Input );
