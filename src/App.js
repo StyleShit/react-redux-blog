@@ -1,11 +1,11 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import store from '../redux/store';
+import store from './redux/store';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import Header from './Header';
-import PostEditor from './PostEditor';
-import { Home, Posts } from '../pages';
+import Header from './components/Header';
+import PostEditor from './components/PostEditor';
+import { Home, Posts } from './pages';
 
 import './css/edf-0.1.css';
 import './css/App.css';
