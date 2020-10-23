@@ -53,3 +53,16 @@ html, body
     padding: 50px 100px;
     box-shadow: 0 0 10px 0 rgba( 0,0,0,.3 );
 }
+
+.post-editor input:not([ type="submit" ]), .post-editor textarea
+{
+    display: block;
+    margin-bottom: 20px;
+    width: 300px;
+}
+
+.post-editor input[type="submit"]
+{
+    display: table;
+    margin: auto;
+}

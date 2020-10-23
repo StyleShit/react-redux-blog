@@ -6,10 +6,7 @@ function Textarea({ label, ...rest })
     return (
         <>
             { label &&
-                <>
-                    <label htmlFor={ rest.id }>{ label }:</label>
-                    <br />
-                </>
+                <label htmlFor={ rest.id }>{ label }:</label>
             }
 
             <textarea { ...rest } />

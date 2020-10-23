@@ -23,30 +23,28 @@ function PostEditor()
         id = 'new'
     } = ( typeof posts[postID] !== 'undefined') ? { ...posts[postID], id: postID } : {};
 
+    
+    const handleSubmit = e => {
+     
+        e.preventDefault();
+        
+        dispatch( savePost( id, { title, content } ) );
+        history.push( '/posts' );
+
+    }
+
     return (
         <>
             <Overlay />
 
             <div className="post-editor-container">
                 <div className="post-editor">
-                    <form onSubmit={ e => { e.preventDefault() }}>
+                    <form onSubmit={ handleSubmit }>
 
                         <Input value={ title } label="Post Title" onChange={ e => { title = e.target.value } } />
-                        
-                        <br /><br />
-
                         <Textarea value={ content } label="Post Content" onChange={ e => { content = e.target.value } } />
-
-                        <br /><br />
-
-                        <input type="submit" 
-                            value={ id === 'new' ? 'Post' : 'Save' }
-                            className="btn btn-info" 
-                            onClick={ () => { 
-                                dispatch( savePost( id, { title, content } ) );
-                                history.goBack();
-                            } 
-                        } />
+                        
+                        <input type="submit" className="btn btn-info" value={ id === 'new' ? 'Post' : 'Save' } />
 
                     </form>
                 </div>

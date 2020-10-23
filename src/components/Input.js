@@ -6,10 +6,7 @@ function Input({ label, ...rest })
     return (
         <>
             { label &&
-                <>
-                    <label htmlFor={ rest.id }>{ label }:</label>
-                    <br />
-                </>
+                <label htmlFor={ rest.id }>{ label }:</label>
             }
 
             <input { ...rest } />
