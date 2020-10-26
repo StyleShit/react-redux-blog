@@ -3,7 +3,7 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import rootReducer from './rootReducer';
 import { apiMiddleware } from './middlewares/api/';
-import loggerMiddleware from './middlewares/logger/logger';
+import { loggerMiddleware } from './middlewares/logger/';
 
 
 // configure & initialize persist reducer
