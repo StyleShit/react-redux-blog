@@ -1,49 +1,99 @@
 const router = require( 'express' ).Router();
+const getItemMiddleware = require( '../middlewares/getItem' );
+const Post = require( '../models/post' );
 
-const posts = [
-    { id: 1, title: 'This is a title', content: 'Lorem ipsum dolor sit amet' },
-    { id: 2, title: 'This is a title 2', content: 'Lorem ipsum dolor sit amet 2' },
-    { id: 3, title: 'This is a title 3', content: 'Lorem ipsum dolor sit amet 3' }
-];
+// apply middlewares
+router.use( '/:id', getItemMiddleware( Post, 'post' ) );
 
 
 // get all posts
-router.get( '/', ( req, res ) => {
+router.get( '/', async ( req, res ) => {
 
-    res.json({ posts });
+    try
+    {
+        const posts = await Post.find();
+        res.json( posts );
+    }
+
+    catch( error )
+    {
+        res.status( 500 ).json( error );
+    }
 
 });
 
 
 // create post
-router.post( '/', ( req, res ) => {
+router.post( '/', async ( req, res ) => {
 
-    res.json({});
+    const post = Post({
+
+        title: req.body.title,
+        content: req.body.content,
+        createdAt: req.body.createdAt
+
+    });
+
+    try
+    {
+        await post.save();
+        res.status( 201 ).json( post );
+    }
+
+    catch( error )
+    {
+        res.status( 400 ).json( error );
+    }
 
 });
 
 
 // get post by id
-router.get( '/:id', ( req, res) => {
+router.get( '/:id', ( req, res ) => {
 
-    res.json({});
+    res.json( res.post );
 
 });
 
 
 // delete post by id
-router.delete( '/:id', ( req, res) => {
+router.delete( '/:id', async ( req, res ) => {
 
-    res.json({});
+    try
+    {
+        const deletedPost = await res.post.delete();
+        res.json( deletedPost );
+    }
+
+    catch( error )
+    {
+        res.status( 500 ).json( error );
+    }
 
 });
 
 
 // update post by id
-router.put( '/:id', ( req, res) => {
+router.patch( '/:id', async ( req, res ) => {
 
-    res.json({});
+    const { title, content } = req.body;
 
+    if( title )
+        res.post.title = title;
+
+    if( content )
+        res.post.content = content;
+
+    try
+    {
+        await res.post.save();
+        res.json( res.post );
+    }
+
+    catch( error )
+    {
+        res.status( 500 ).json( error );
+    }
 });
 
 
