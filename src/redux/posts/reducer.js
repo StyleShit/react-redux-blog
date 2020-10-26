@@ -16,12 +16,12 @@ const reducer = ( state = defaultState, { type, payload } ) => {
     switch( type )
     {
         // save post
-        case ACTIONS.SAVE_POST:
+        case ACTIONS.SAVE:
             return savePost( state, payload.id, payload.post );
 
 
         // delete post
-        case ACTIONS.DELETE_POST:
+        case ACTIONS.DELETE:
             return deletePost( state, payload.id );
 
         default:

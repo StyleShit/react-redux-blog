@@ -5,7 +5,7 @@ import ACTIONS from './actionTypes';
 export const savePost = ( id, post ) => {
 
     return {
-        type: ACTIONS.SAVE_POST,
+        type: ACTIONS.SAVE,
         payload: {
             id: id,
             post: post
@@ -19,7 +19,7 @@ export const savePost = ( id, post ) => {
 export const deletePost = id => {
 
     return {
-        type: ACTIONS.DELETE_POST,
+        type: ACTIONS.DELETE,
         payload: {
             id: id
         }

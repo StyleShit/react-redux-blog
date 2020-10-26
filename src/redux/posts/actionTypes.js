@@ -1,6 +1,6 @@
 const ACTIONS = {
-    SAVE_POST: 'SAVE_POST',
-    DELETE_POST: 'DELETE_POST'
+    SAVE: 'posts/SAVE',
+    DELETE: 'posts/DELETE'
 };
 
 export default ACTIONS;
