@@ -21,8 +21,8 @@ const apiMiddleware = ({ dispatch }) => next => action => {
         method = 'GET',
         data = {},
         headers = {},
-        onSuccess = () => {},
-        onError = () => {}
+        onSuccess = () => ({ type: '' }),
+        onError = () => ({ type: '' })
         
     } = action.payload;
 
@@ -63,14 +63,14 @@ const apiMiddleware = ({ dispatch }) => next => action => {
 
             // successful request
             dispatch( apiSuccess( label, data ) );
-            onSuccess( data );
+            dispatch( onSuccess( data ) );
         })
 
         // request error
         .catch( error => {
 
             dispatch( apiError( label, error ) );
-            onError( error );
+            dispatch( onError( error ) );
 
         });
 

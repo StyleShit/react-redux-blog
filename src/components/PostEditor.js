@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { savePost } from '../redux';
 import Input from './Input';
 import Overlay from './Overlay';
@@ -8,7 +8,6 @@ import Textarea from './Textarea';
 
 function PostEditor()
 {
-    const history = useHistory();
     const dispatch = useDispatch();
 
     // get post by URL paramter
@@ -30,7 +29,7 @@ function PostEditor()
     const handleSubmit = e => {
      
         e.preventDefault();
-        savePost( dispatch, history, { id, title, content });
+        dispatch( savePost({ id, title, content }) );
 
     }
 

@@ -18,7 +18,7 @@ function Post({ post })
                 Edit
             </Link>
 
-            <button onClick={ () => { deletePost( dispatch, { id } ) } } className="btn btn-error">Delete</button>
+            <button onClick={ () => { dispatch( deletePost({ id }) ) } } className="btn btn-error">Delete</button>
         </div>
     )
 }

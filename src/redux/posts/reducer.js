@@ -1,5 +1,4 @@
 import ACTIONS from './actionTypes';
-import { API_ACTIONS } from '../middlewares/api';
 
 
 // set default state values
@@ -9,25 +8,19 @@ const defaultState = [];
 // define the reducer
 const reducer = ( state = defaultState, { type, payload } ) => {
 
-    // throw non-api calls
-    if( type !== API_ACTIONS.SUCCESS )
-        return state;
-        
-
-    // check which action initiated the api call
-    switch( payload.label )
+    switch( type )
     {
         // fetch all posts
-        case ACTIONS.FETCH:
-            return payload.data;
+        case ACTIONS.SET:
+            return payload.posts;
 
         // save post
         case ACTIONS.SAVE:
-            return savePost( state, payload.data );
+            return savePost( state, payload.post );
 
         // delete post
         case ACTIONS.DELETE:
-            return deletePost( state, payload.data );
+            return deletePost( state, payload.post );
 
         default:
             return state;
