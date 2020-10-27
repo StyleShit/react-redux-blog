@@ -1,7 +1,8 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import store from './redux/store';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
+import history from './history';
 
 import Header from './components/Header';
 import PostEditor from './components/PostEditor';
@@ -20,7 +21,7 @@ function App()
 				React-Redux Posts Application
 			</Header>
 
-			<Router>
+			<Router history={ history }>
 				<Switch>
 
 					<Route exact path='/'>

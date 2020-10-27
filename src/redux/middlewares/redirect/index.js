@@ -1,0 +1,1 @@
+export { default as redirectMiddleware } from './redirect';
