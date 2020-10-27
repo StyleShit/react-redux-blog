@@ -18,7 +18,7 @@ const persistConfig = {
 const pReducer = persistReducer( persistConfig, rootReducer );
 
 // export the Redux store
-const store = createStore( pReducer, applyMiddleware( apiMiddleware, loggerMiddleware ) );
+const store = createStore( pReducer, applyMiddleware( loggerMiddleware, apiMiddleware ) );
 export default store;
 
 // export store persistor
