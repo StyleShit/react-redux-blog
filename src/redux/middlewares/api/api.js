@@ -55,19 +55,15 @@ const apiMiddleware = ({ dispatch }) => next => action => {
         
         .then( async res => {
 
+            const data = await( res.json() );
+
             // catch non-2xx HTTP codes
             if( ![200, 201].includes( res.status ) )
-                return Promise.reject( await( res.json() ) );
+                return Promise.reject( data );
 
-            return res.json();
-        })
-        
-        // successful request
-        .then( data => { 
-
+            // successful request
             dispatch( apiSuccess( label, data ) );
             onSuccess( data );
-
         })
 
         // request error
