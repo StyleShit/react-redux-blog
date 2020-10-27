@@ -30,3 +30,14 @@ export const apiError = ( label, error ) => {
     };
 
 };
+
+
+// make an api call
+export const apiAction = ( payload ) => {
+
+    return {
+        type: ACTIONS.API,
+        payload
+    };
+
+}
