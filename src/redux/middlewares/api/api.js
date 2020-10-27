@@ -51,11 +51,20 @@ const apiMiddleware = ({ dispatch }) => next => action => {
     }
 
     // make the request
-    fetch( url, options ).then( res  => res.json() )
+    fetch( url, options )
+        
+        .then( async res => {
+
+            // catch non-2xx HTTP codes
+            if( ![200, 201].includes( res.status ) )
+                return Promise.reject( await( res.json() ) );
+
+            return res.json();
+        })
         
         // successful request
         .then( data => { 
-            
+
             dispatch( apiSuccess( label, data ) );
             onSuccess( data );
 
