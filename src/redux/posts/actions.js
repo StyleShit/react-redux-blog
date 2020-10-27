@@ -1,28 +1,55 @@
+import { apiAction } from '../middlewares/api';
 import ACTIONS from './actionTypes';
 
 
-// save post by id
-export const savePost = ( id, post ) => {
+// fetch posts from API
+export const fetchPosts = () => {
 
     return {
-        type: ACTIONS.SAVE,
-        payload: {
-            id: id,
-            post: post
-        }
+        type: ACTIONS.FETCH,
+        payload: {}
     };
 
 }
 
 
-// delete post by id
-export const deletePost = id => {
+// save post by id
+export const savePost = ( dispatch, history, { id, title, content } ) => {
 
-    return {
-        type: ACTIONS.DELETE,
-        payload: {
-            id: id
-        }
-    };
+    // create new
+    if( id === 'new')
+    {
+        dispatch( apiAction({
+            url: '/posts',
+            method: 'POST',
+            data: { title, content },
+            label: ACTIONS.SAVE,
+            onSuccess: () => { history.push( '/posts' ); }
+        }) );
+    }
+
+    // update existing
+    else
+    {
+        dispatch( apiAction({
+            url: `/posts/${ id }`,
+            method: 'PATCH',
+            data: { title, content },
+            label: ACTIONS.SAVE,
+            onSuccess: () => { history.push( '/posts' ); }
+        }) );
+    }
+
+}
+
+
+// delete post by id
+export const deletePost = ( dispatch, { id } ) => {
+
+    dispatch( apiAction({
+        url: `/posts/${ id }`,
+        method: 'DELETE',
+        label: ACTIONS.DELETE
+    }) );
 
 }

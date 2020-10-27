@@ -1,28 +1,33 @@
 import ACTIONS from './actionTypes';
+import { API_ACTIONS } from '../middlewares/api';
 
 
 // set default state values
-const defaultState = [
-    { 
-        title: 'Post 1 title', 
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ' 
-    }
-];
+const defaultState = [];
 
 
 // define the reducer
 const reducer = ( state = defaultState, { type, payload } ) => {
 
-    switch( type )
+    // throw non-api calls
+    if( type !== API_ACTIONS.SUCCESS )
+        return state;
+        
+
+    // check which action initiated the api call
+    switch( payload.label )
     {
+        // fetch all posts
+        case ACTIONS.FETCH:
+            return payload.data;
+
         // save post
         case ACTIONS.SAVE:
-            return savePost( state, payload.id, payload.post );
-
+            return savePost( state, payload.data );
 
         // delete post
         case ACTIONS.DELETE:
-            return deletePost( state, payload.id );
+            return deletePost( state, payload.data );
 
         default:
             return state;
@@ -37,31 +42,26 @@ export default reducer;
  * Reducer helper functions
  */
 
-const savePost = ( state, id, post) => {
+const savePost = ( state, post ) => {
     let updated = [ ...state ];
 
+    const selectedPostId = updated.findIndex( p => ( p._id === post._id ));
+
     // create new post
-    if( id === 'new' || typeof( updated[id] ) === 'undefined' )
+    if( selectedPostId === -1 )
         updated = [ ...updated, post ];
 
     // update existing post
     else
-        updated[id] = post;
+        updated[selectedPostId] = post;
 
     return updated;
 }
 
 
-const deletePost = ( state, id ) => {
+const deletePost = ( state, post ) => {
 
-    let updated = [ ...state ];
-
-    // if post id doesn't exists
-    if( typeof( updated[id] ) === 'undefined' )
-        return updated;
-
-    
-    updated.splice( id, 1);
+    let updated = state.filter( p => ( p._id !== post._id ));
 
     return updated;
 

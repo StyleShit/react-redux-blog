@@ -18,7 +18,7 @@ function Posts()
 
             {
                 posts.map( ( post, i ) => {
-                    return <Post key={ i } post={{ ...post, id: i }} />
+                    return <Post key={ i } post={{ ...post }} />
                 })
             }
 

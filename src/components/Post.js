@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 
 function Post({ post })
 {
-    const { title, content, id } = post;
+    const { title, content, _id: id } = post;
     const dispatch = useDispatch();
 
     return (
@@ -18,7 +18,7 @@ function Post({ post })
                 Edit
             </Link>
 
-            <button onClick={ () => { dispatch( deletePost( id ) ) } } className="btn btn-error">Delete</button>
+            <button onClick={ () => { deletePost( dispatch, { id } ) } } className="btn btn-error">Delete</button>
         </div>
     )
 }

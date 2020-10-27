@@ -2,8 +2,9 @@ import { applyMiddleware, createStore } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import rootReducer from './rootReducer';
-import { apiMiddleware } from './middlewares/api/';
+import { apiAction, apiMiddleware } from './middlewares/api/';
 import { loggerMiddleware } from './middlewares/logger/';
+import { POSTS_ACTIONS } from './';
 
 
 // configure & initialize persist reducer
@@ -23,3 +24,10 @@ export default store;
 
 // export store persistor
 export const persistor = persistStore( store );
+
+
+// fetch posts from api
+store.dispatch( apiAction({
+    url: '/posts',
+    label: POSTS_ACTIONS.FETCH
+}) );

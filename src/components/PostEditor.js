@@ -15,21 +15,22 @@ function PostEditor()
     const { id: postID } = useParams();
     const posts = useSelector( state => state.posts );
 
+    // find the current post
+    const selectedPost = posts.find( post => ( post._id === postID ));
+
     // extract data from current edited post, 
     // or set as a new one if it doesn't exist
     let {
         title = '', 
         content = '', 
-        id = 'new'
-    } = ( typeof posts[postID] !== 'undefined') ? { ...posts[postID], id: postID } : {};
+        _id: id = 'new'
+    } = ( typeof selectedPost !== 'undefined') ? selectedPost : {};
 
     
     const handleSubmit = e => {
      
         e.preventDefault();
-        
-        dispatch( savePost( id, { title, content } ) );
-        history.push( '/posts' );
+        savePost( dispatch, history, { id, title, content });
 
     }
 
