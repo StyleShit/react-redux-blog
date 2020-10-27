@@ -21,8 +21,8 @@ const apiMiddleware = ({ dispatch }) => next => action => {
         method = 'GET',
         data = {},
         headers = {},
-        onSuccess = () => ({ type: '' }),
-        onError = () => ({ type: '' })
+        onSuccess = () => {},
+        onError = () => {}
         
     } = action.payload;
 
@@ -57,7 +57,7 @@ const apiMiddleware = ({ dispatch }) => next => action => {
         .then( data => { 
             
             dispatch( apiSuccess( label, data ) );
-            dispatch( onSuccess( data ) );
+            onSuccess( data );
 
         })
 
@@ -65,7 +65,7 @@ const apiMiddleware = ({ dispatch }) => next => action => {
         .catch( error => {
 
             dispatch( apiError( label, error ) );
-            dispatch( onError( error ) );
+            onError( error );
 
         });
 
