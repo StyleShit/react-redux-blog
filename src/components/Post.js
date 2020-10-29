@@ -2,11 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { deletePost } from '../redux';
 import { useDispatch } from 'react-redux';
+import { useToast } from '../contexts/ToastProvider';
 
 function Post({ post })
 {
     const { title, content, _id: id } = post;
     const dispatch = useDispatch();
+    const toast = useToast();
 
     return (
         <div className="panel">
@@ -18,7 +20,11 @@ function Post({ post })
                 Edit
             </Link>
 
-            <button onClick={ () => { dispatch( deletePost({ id }) ) } } className="btn btn-error">Delete</button>
+            <button onClick={ () => { 
+                dispatch( deletePost({ id }) );
+                toast({ message: 'Deleted!', type: 'success' }); 
+                } } 
+            className="btn btn-error">Delete</button>
         </div>
     )
 }

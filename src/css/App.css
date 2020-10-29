@@ -72,3 +72,38 @@ html, body
     display: table;
     margin: auto;
 }
+
+.toasts-container
+{
+    width: 300px;
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    z-index: 9999;
+}
+
+.toast
+{
+    background-color: #00aaff;
+    color: #FFF;
+    padding: 15px 20px;
+    margin: 10px 0;
+    box-shadow: 0 0 20px 0 rgba( 0,0,0,.4 );
+    transition: .3s all;
+}
+
+.toast-error
+{
+    background-color: #ff5722;
+}
+
+.toast-success
+{
+    background-color: #22cc22;
+}
+
+.toast-hidden
+{
+    opacity: 0;
+    pointer-events: none;
+}

@@ -7,6 +7,7 @@ import history from './history';
 import Header from './components/Header';
 import PostEditor from './components/PostEditor';
 import { Home, Posts } from './pages';
+import withToast from './HOCs/withToast';
 
 import './css/edf-0.1.css';
 import './css/App.css';
@@ -16,7 +17,6 @@ function App()
 {
 	return (
 		<Provider store={ store }>
-
 			<Header>
 				React-Redux Posts Application
 			</Header>
@@ -42,4 +42,4 @@ function App()
 	);
 }
 
-export default App;
+export default withToast( App );
