@@ -30,13 +30,13 @@ function App()
 
 					<Route path='/posts'>
 						<Posts />
+
+						<Route exact path={[ '/posts/:id/edit', '/posts/new' ]}>
+							<PostEditor></PostEditor>
+						</Route>
 					</Route>
 
 				</Switch>
-
-				<Route exact path={[ '/posts/:id/edit', '/posts/new' ]}>
-					<PostEditor></PostEditor>
-				</Route>
 			</Router>
 		</Provider>
 	);
